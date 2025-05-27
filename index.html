@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ninjatech Solutions</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3523/3523063.png">
+  <link rel="icon" href="ninja-logo.png">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
     body { background-color: #f9f9f9; color: #333; line-height: 1.6; }
     header { background-color: #101820; color: white; padding: 2rem 1rem; text-align: center; position: sticky; top: 0; z-index: 1000; }
-    nav { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+    nav { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }
     nav a { color: #fff; text-decoration: none; font-weight: 600; transition: color 0.3s; }
     nav a:hover { color: #00c2ff; }
-    header h1 { font-size: 2.5rem; }
-    header p { font-size: 1.2rem; margin-top: 0.5rem; }
+    header img.logo { height: 60px; margin-bottom: 0.5rem; filter: drop-shadow(0 0 4px rgba(0,194,255,0.6)); }
+    header h1 { font-size: 2.5rem; margin-top: 0.5rem; }
+    header p { font-size: 1.2rem; margin-top: 0.3rem; }
     section { padding: 3rem 1rem; max-width: 1000px; margin: 0 auto; }
     .section-title { text-align: center; margin-bottom: 2rem; font-size: 2rem; color: #101820; }
     .grid { display: grid; gap: 1.5rem; }
@@ -32,10 +33,16 @@
     .cta-box a { background: #00c2ff; color: white; padding: 0.75rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: bold; }
     .contact p { text-align: center; font-size: 1.1rem; }
     footer { background: #101820; color: white; text-align: center; padding: 1rem; font-size: 0.9rem; }
+    .logo-section { display: flex; flex-direction: column; align-items: center; }
+    .logo-text { font-size: 1rem; color: #aaa; margin-top: 0.3rem; }
   </style>
 </head>
 <body>
   <header>
+    <div class="logo-section">
+      <img src="ninja-logo.png" alt="Ninjatech Logo" class="logo">
+      <span class="logo-text">Ninjatech Solutions</span>
+    </div>
     <h1>Ninjatech Solutions</h1>
     <p>Secure. Automate. Empower.</p>
     <nav>
