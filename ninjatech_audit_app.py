@@ -148,4 +148,4 @@ st.markdown("""---
 ### Embed This App Into Your Website
 Copy this HTML snippet and paste it into your website:
 """)
-st.code(embed_html, language='html'
+st.code(embed_html, language='html')
