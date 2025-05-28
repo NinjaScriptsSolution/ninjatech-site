@@ -20,10 +20,28 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
     body { background-color: #f9f9f9; color: #333; line-height: 1.6; }
-    section { padding: 4rem 2rem; text-align: center; }
-    .section-title { font-size: 2rem; margin-bottom: 1rem; }
-    .cta-box { background-color: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
-    .button { background-color: #00c2ff; color: white; padding: 0.75rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; }
+    header { background-color: #101820; color: white; padding: 2rem 1rem; text-align: center; position: sticky; top: 0; z-index: 1000; }
+    nav { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }
+    nav a { color: #fff; text-decoration: none; font-weight: 600; transition: color 0.3s; }
+    nav a:hover { color: #00c2ff; }
+    header img.logo { height: 60px; margin-bottom: 0.5rem; filter: drop-shadow(0 0 4px rgba(0,194,255,0.6)); }
+    header h1 { font-size: 2.5rem; margin-top: 0.5rem; }
+    header p { font-size: 1.2rem; margin-top: 0.3rem; }
+    section { padding: 3rem 1rem; max-width: 1000px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 2rem; font-size: 2rem; color: #101820; }
+    .grid { display: grid; gap: 1.5rem; }
+    @media (min-width: 600px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    .service-item, .pricing-item, .testimonial, .cta-box {
+      background: white; border: 1px solid #ddd; border-radius: 8px;
+      padding: 1.5rem; transition: transform 0.3s ease; box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .service-item:hover, .pricing-item:hover, .testimonial:hover, .cta-box:hover { transform: translateY(-5px); }
+    .pricing-item h3, .testimonial h3 { margin-bottom: 0.5rem; }
+    .cta-box { text-align: center; border: 2px dashed #00c2ff; background: #e9f9ff; }
+    .cta-box h3 { margin-bottom: 0.5rem; color: #101820; }
+    .cta-box p { margin-bottom: 1rem; }
+    .cta-box a { background: #00c2ff; color: white; padding: 0.75rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: bold; }
+    .contact p { text-align: center; font-size: 1.1rem; }
     footer { background: #101820; color: white; text-align: center; padding: 1rem; font-size: 0.9rem; }
     .logo-section { display: flex; flex-direction: column; align-items: center; }
     .logo-text { font-size: 1rem; color: #aaa; margin-top: 0.3rem; }
@@ -43,24 +61,53 @@
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo-section">
+      <img src="ninja-logo.png" alt="Ninjatech Logo" class="logo">
+      <span class="logo-text">Ninjatech Solutions</span>
+    </div>
+    <h1>Ninjatech Solutions</h1>
+    <p>Secure. Automate. Empower.</p>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#trial">Trial</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <section id="audit-tool" class="audit-section">
-    <h2 class="section-title" data-aos="fade-up">🔍 Free Digital Hygiene Audit</h2>
+  <section id="services">
+    <h2 class="section-title" data-aos="fade-up">Our Services</h2>
+    <div class="grid">
+      <div class="service-item" data-aos="fade-up"><h3>🔒 Security Audits</h3><p>Thorough checks for password reuse, firewall status, and vulnerabilities.</p></div>
+      <div class="service-item" data-aos="fade-up"><h3>🖥️ Infrastructure Monitoring</h3><p>Monitor servers, uptime, logs, and health metrics to keep your business online.</p></div>
+      <div class="service-item" data-aos="fade-up"><h3>⚙️ Automation Scripts</h3><p>Custom scripts to automate backups, patching, and other routine tasks.</p></div>
+      <div class="service-item" data-aos="fade-up"><h3>📄 Digital Hygiene Reports</h3><p>Comprehensive monthly reports to assess your digital posture.</p></div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2 class="section-title" data-aos="fade-up">Pricing Plans</h2>
+    <div class="grid">
+      <div class="pricing-item" data-aos="fade-up"><h3>Starter - $150/mo</h3><p>Basic audit + 5 devices monitored + monthly report</p></div>
+      <div class="pricing-item" data-aos="fade-up"><h3>Pro - $450/mo</h3><p>Full monitoring + scripting + 10 devices + 48h support response</p></div>
+      <div class="pricing-item" data-aos="fade-up"><h3>Managed - $850/mo</h3><p>24/7 monitoring + automation + unlimited devices + compliance support</p></div>
+    </div>
+  </section>
+
+  <section id="trial">
+    <h2 class="section-title" data-aos="fade-up">Free Trial</h2>
     <div class="cta-box" data-aos="zoom-in">
-      <p>
-        Run a complete system health check in under 2 minutes.<br>
-        ✅ Optimize performance<br>
-        ✅ Clean junk files<br>
-        ✅ Scan for exposed sensitive data<br>
-        ✅ Download a detailed report
-      </p>
-      <a href="https://audit.ninjatech.io" target="_blank" class="button">Launch Audit Tool</a>
+      <h3>Try Us Free for 7 Days</h3>
+      <p>Experience our security audit and monitoring service — no commitment, no card needed.</p>
+      <a href="mailto:wtroy99@gmail.com?subject=Free Trial Request">Start Your Trial</a>
     </div>
   </section>
 
   <section id="contact" class="contact">
     <h2 class="section-title" data-aos="fade-up">Contact Us</h2>
     <p data-aos="fade-up">Email us at <a href="mailto:wtroy99@gmail.com">wtroy99@gmail.com</a> or book a time on our <a href="https://calendly.com/yourname/ninjatech-consult">Calendly</a>.</p>
+    <p data-aos="fade-up">Email us at <a href="mailto:wtroy99@gmail.com">wtroy99@gmail.com</a> or book a time on our <a href="https://calendly.com/wtroy99/30min">Calendly</a>.</p>
 
     <form id="contact-form">
       <input type="text" name="name" placeholder="Your Name" required>
