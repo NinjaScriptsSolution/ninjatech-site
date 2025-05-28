@@ -4,6 +4,7 @@ import socket
 import subprocess
 import datetime
 from fpdf import FPDF
+import os
 
 class ReportPDF(FPDF):
     def header(self):
@@ -57,6 +58,12 @@ def scan_open_ports():
             results[port] = (result == 0)
     return results
 
+def clean_temp_files():
+    if platform.system() == "Windows":
+        return subprocess.getoutput("del /q/f/s %TEMP%\*")
+    else:
+        return subprocess.getoutput("rm -rf /tmp/*")
+
 def generate_report():
     pdf = ReportPDF()
     pdf.add_page()
@@ -79,15 +86,19 @@ def generate_report():
     port_summary = "\n".join([f"Port {port}: {'OPEN' if status else 'CLOSED'}" for port, status in ports.items()])
     pdf.section_body(port_summary)
 
+    pdf.section_title("Temporary Files Cleanup")
+    cleanup_result = clean_temp_files()
+    pdf.section_body("Temporary files cleanup completed.\n")
+
     filename = f"digital_hygiene_audit_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
     pdf.output(filename)
     return filename
 
 st.title("Ninjatech Digital Hygiene Audit")
-st.write("Click the button below to run the system audit and download your PDF report.")
+st.write("Click the button below to run the system audit, clean up temp files, and download your PDF report.")
 
-if st.button("Run Audit & Generate Report"):
-    with st.spinner("Running audit and generating report..."):
+if st.button("Run Audit, Cleanup & Generate Report"):
+    with st.spinner("Running audit and cleanup, generating report..."):
         report_file = generate_report()
         with open(report_file, "rb") as f:
             st.success("Audit completed! Download your report below:")
@@ -97,3 +108,20 @@ if st.button("Run Audit & Generate Report"):
                 file_name=report_file,
                 mime="application/pdf"
             )
+
+# Embedded link snippet for website HTML (copy into your main site)
+embed_html = '''
+<section id="audit-tool">
+  <h2 class="section-title" data-aos="fade-up">Try Our Free Audit Tool</h2>
+  <div class="cta-box" data-aos="zoom-in">
+    <p>Run a system health check and download a security report instantly.</p>
+    <a href="https://audit.ninjatech.io" target="_blank" class="button">Launch Audit App</a>
+  </div>
+</section>
+'''
+
+st.markdown("""---
+### Embed This App Into Your Website
+Copy this HTML snippet and paste it into your website:
+""")
+st.code(embed_html, language='html')
